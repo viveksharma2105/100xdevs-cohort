@@ -38,7 +38,7 @@ users.push({
 })
 
 res.json({
-    message: "You are signin"
+    message: "You are sign up"
 })
 
 console.log(users)
@@ -79,6 +79,32 @@ else{
 
 console.log(users)
 
+})
+
+
+//returns me own username  and passwords by token (and add the signin token in hadder for get username and password)
+app.get("/me", function (req, res) {
+    const token =  req.headers.token
+    let foundUser = null
+
+    for (let i = 0; i < users.length; i++) {
+        if(users[i].token == token){
+            foundUser = users[i];
+        }
+    }
+
+    if (foundUser) {
+        res.json({
+            username: foundUser.username,
+            password: foundUser.password
+        })
+
+    }else{
+        res.json({
+            message:"Token invalid"
+        })
+    }
+    
 })
 
 app.listen(3000);
