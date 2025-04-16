@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+        function sendRequest() {
+            axios.post("http://localhost:3000/sum",{
+                a: document.getElementById("a").value,
+                b: document.getElementById("b").value
+            })
+            
+        }
+        //for run this file in http server we use  (python -m SimpleHTTPServer) command 
+        //then move the html file in a another folder then run command (npx serve)
+    </script>
+</head>
+<body>
+    <input id="a" type="text"  placeholder="First value"></input>
+    <input id="a" type="text"  placeholder="Second value"></input>
+
+ <button onclick="sendRequest()">Find sum</button>
+</body>
+</html>
