@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auth website</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+<script>
+   async function signup() {
+        const username = document.getElementById("sign-up").value;
+        const password = document.getElementById("pwd1").value;
+        
+       await axios.post("http://localhost:3000/signup",{
+            username:username,
+            password:password
+        
+        })
+        alert("You are sign-up")
+    }
+
+   async function signin(){
+        const username = document.getElementById("sign-in").value;
+        const password = document.getElementById("pwd2").value;
+
+       const response =  await axios.post("http://localhost:3000/signin",{
+            username:username,
+            password:password
+        })
+
+
+        ///store the token we can also store  the theme like  dark light etc
+        localStorage.setItem("token", response.data.token)
+        alert("You are sign in")
+
+        getMyInfo();
+    }
+
+
+    //to see my username and password on my page
+    async function getMyInfo() {
+    try {
+        // Only call if token exists
+        if (!localStorage.getItem("token")) {
+            document.getElementById("Information").innerHTML = "Please sign in first";
+            return;
+        }
+        
+        const response = await axios.get("http://localhost:3000/me", {
+            headers: {
+                token: localStorage.getItem("token")
+            }
+        });
+        
+        if (response.data.username) {
+            document.getElementById("Information").innerHTML = "username: " + response.data.username + ", Password: " + response.data.password;
+        } else {
+            document.getElementById("Information").innerHTML = response.data.message || "No user data available";
+        }
+    } catch (error) {
+        document.getElementById("Information").innerHTML = "Error fetching user data";
+        console.error(error);
+    }
+}
+
+function logout () {
+    localStorage.removeItem("token")
+    
+}
+</script>
+
+</head>
+<body>
+    <div>
+        signup
+        <input id="sign-up" type="text" name="username" placeholder="username">
+        <input id="pwd1" type="text" name="password" placeholder="password">
+        <button onclick="signup()">Submit</button>
+        
+    </div>
+    <div>
+        signin
+        <input id="sign-in" type="text" name="username" placeholder="username">
+        <input id="pwd2" type="password" name="password" placeholder="password">
+        <button onclick="signin()">Submit</button>
+    </div>
+    <div>
+        User Information:
+        <div id="Information"></div>
+    </div>
+    <button onclick="logout()">Submit</button>
+</body>
+</html>
