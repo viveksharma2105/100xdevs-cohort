@@ -28,7 +28,7 @@ setInterval(()=>{
 //useEffect is calls once 
 
 useEffect(function(){
-  setInterval(()=>{
+  let clock = setInterval(()=>{
    setCount(count => count+1)
    
   },1000)
