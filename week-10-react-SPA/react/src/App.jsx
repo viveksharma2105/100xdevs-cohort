@@ -1,22 +1,48 @@
-import { useState } from 'react';
+import { useState, useRef} from 'react';
+
 import './App.css';
 
+//----------------------A Clock with start and a stop button-------------------------------------
 function App() {
-     const [darkMode, setDarkmode] = useState(false);
-     function toggletheme() {
-      setDarkmode(!darkMode)
-     }
+  const [currentCount, setCurrrrntCount] = useState(0);
+  const timer = useRef();
 
-   return <div  style={{
-      backgroundColor: darkMode ? 'black' : 'white',
-      height: '100vh',
-      textAlign: 'center',
-      padding:50
-    }}>
-      <button onClick={toggletheme} style={{color: darkMode ? 'white' : 'black', backgroundColor: darkMode ? 'black':'white'}}>Change Theme</button>
-   </div>
-
-   
+function StartClock() {
+  let value = setInterval(() => {
+    setCurrrrntCount(c=> c + 1)
+  }, 1000);
+  timer.current = value;
 }
 
-export default App;
+
+function StopClock() {
+  clearInterval(timer.current);
+}
+  return <div>
+    {currentCount} <br />
+
+    <button onClick={StartClock}>Start</button> <br />
+    <button onClick={StopClock}>Stop</button>
+  </div>
+  
+}
+
+////-----------------------------This is how the ref work and focus on input---------------------
+// function App() {
+// const inputRef = useRef();
+
+// function fucusOnInput(){
+//   inputRef.current.focus()
+// }
+
+//   return <div>
+//     SignUp 
+//     <input ref={inputRef} type={"text"}></input>
+//     <input type={"text"}></input>
+//     <button type="submit" onClick={fucusOnInput}>Submit</button>
+//   </div>
+
+
+// }
+
+ export default App;
