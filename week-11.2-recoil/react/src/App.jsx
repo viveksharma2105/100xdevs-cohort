@@ -1,65 +1,102 @@
 import React, { useEffect, useState,memo } from 'react';
 
 import './App.css'
-import { counterAtom } from './store/atom/counter';
-
+import { counterAtom, evenSelector } from './store/atom/counter';
+import { RecoilRoot, useRecoilValue, useSetRecoilState } from 'recoil';
 
 function App() {
-  return (
-    <>
-    
-      <Counter />
-    
-    </>
-  )
+  
+  return <div>
+    <RecoilRoot>
+    <Buttons/>
+    <Counter/>
+    <IsEven/>
+    </RecoilRoot>
+  </div>
+}
+
+function Buttons() {
+const setCount = useSetRecoilState(counterAtom);
+
+  return <div>
+    <button onClick={()=> setCount(c => c + 2)}>Increase</button>
+    <button onClick={()=> setCount(c => c - 1)}>Decrease</button>
+  </div>
+  
 }
 
 function Counter() {
-  const [count, setCount] = useState(0);
-
-  useEffect(()=>{
-    setInterval(()=>{
-      setCount(c => c + 1)
-    },3000)
-  },[]);
-
-  return (
-    <div>
-      <CurrCount/>
-      <Increase  />
-      <Decrease  />
-    </div>
-  )
+  const count = useRecoilValue(counterAtom)
+  return <div>
+    {count}
+  </div>
 }
 
-
-
-const CurrCount = memo(function () {
- return <div>
-  1
- </div>
-})
-
-
-
-
-const Increase = memo(function () {
+function IsEven() {
+  const even = useRecoilValue(evenSelector)
+  return <div>
+    {even ? "Even" : "Odd"}
+  </div>
   
-  return (
-    <div>
-      <button onClick={() => setCount(c => c + 1)}>Increase</button>
-    </div>
-  )
-})
+}
 
-const Decrease = memo(function () {
+////--------------------------memo-------------------------------------
+// function App() {
+//   return (
+//     <>
+    
+//       <Counter />
+    
+//     </>
+//   )
+// }
+
+// function Counter() {
+//   const [count, setCount] = useState(0);
+
+//   useEffect(()=>{
+//     setInterval(()=>{
+//       setCount(c => c + 1)
+//     },3000)
+//   },[]);
+
+//   return (
+//     <div>
+//       <CurrCount/>
+//       <Increase  />
+//       <Decrease  />
+//     </div>
+//   )
+// }
+
+
+
+// const CurrCount = memo(function () {
+//  return <div>
+//   1
+//  </div>
+// })
+
+
+
+
+// const Increase = memo(function () {
   
-  return (
-    <div>
-      <button onClick={() => setCount(c => c - 1)}>Decrease</button>
-    </div>
-  )
-})
+//   return (
+//     <div>
+//       <button onClick={() => setCount(c => c + 1)}>Increase</button>
+//     </div>
+//   )
+// })
+
+// const Decrease = memo(function () {
+  
+//   return (
+//     <div>
+//       <button onClick={() => setCount(c => c - 1)}>Decrease</button>
+//     </div>
+//   )
+// })
 
 export default App
 
