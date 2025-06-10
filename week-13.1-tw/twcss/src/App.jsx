@@ -21,3 +21,18 @@ function App() {
 }
 
 export default App
+
+
+//------------------TAILWIND package ready-------------------
+//  npm install -D tailwindcss@3 postcss autoprefixer
+ 
+//   npx tailwindcss init -p
+  
+//  tailwind.config.js =  "./src/**/*.{js,ts,jsx,tsx}"
+
+
+// index.css =  @tailwind base;
+
+// @tailwind components;
+
+// @tailwind utilities;
