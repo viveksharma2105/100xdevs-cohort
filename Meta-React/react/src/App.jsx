@@ -1,16 +1,14 @@
-import { useState } from 'react'
+
 import './App.css'
 
 function App() {
-  
-
 
   return (
     <>
     <Example3/>
     </>
   )
-  
+
 }
 
 function Example3() {
