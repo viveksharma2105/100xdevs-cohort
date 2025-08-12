@@ -57,3 +57,15 @@ let user = {
 // }
 
 greeting(user)
+
+
+//Type: 5 //return type
+function isEven(num:number) :boolean {
+    if (num % 2 == 0) {
+        return true;
+        
+    }else{
+        return false
+    }
+    
+}
