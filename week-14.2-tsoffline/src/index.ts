@@ -26,6 +26,27 @@ interface Userr{
 //for profile disply only name , age  and email
 type  Updateprops = Pick<Userr,'name' | 'age' |'email'>
 
-function displayForProfile(updateprops:Updateprops) {
+type UpdatepropsOptional = Partial<Updateprops> //-------------------Partial
+
+function displayForProfile(Updateprops :UpdatepropsOptional) {
     //hit the database tp and update the  user
 }
+
+
+//--------------ReadOnly------------------
+type Useer = {
+    readonly name:string,
+     readonly age: number
+}
+const user0: Useer = {
+    name:"v",
+    age:21
+}
+
+//object.age = 12 ////here we cannot change the inner element because of the readonly.
+//// -------------for all we have  to  do this ---------------
+// const user0: Readonly<Useer> = {
+//     name:"v",
+//     age:21
+// }
+
