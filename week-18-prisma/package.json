@@ -1,0 +1,19 @@
+{
+  "name": "week-18-prisma",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "tsc -b && node ./dist/index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "@types/pg": "^8.16.0",
+    "pg": "^8.18.0",
+    "prisma": "^7.4.1",
+    "typescript": "^5.9.3"
+  }
+}
