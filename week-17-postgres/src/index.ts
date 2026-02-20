@@ -1,4 +1,4 @@
-import { Client } from "pg";
+import { Client } from "../node_modules/@types/pg/index.js";
 
 const pgClient = new Client({
   connectionString: "postgresql://postgres:postgres123@localhost:5432/test_db",
@@ -70,4 +70,56 @@ main();
 // const insertQuery = `INSERT INTO users (username, email, password) VALUES ($1, $2, $3)`;
 // const result = await pgClient.query(insertQuery, [username, email, password]);
 //   res.json({ message: "User created" });
+// });
+
+
+
+
+
+
+
+
+
+
+
+////In Trasaction (BEGIN,Queries , COMMIT)
+// app.post("/signup", async (req, res) => {
+//   const username = req.body.username;
+//   const email = req.body.email;
+//   const password = req.body.password;
+
+//   try {
+//     await pgClient.query("BEGIN"); // Start transaction
+
+//     const insertQuery = `INSERT INTO users (username, email, password) VALUES ($1, $2, $3)`;
+//     await pgClient.query(insertQuery, [username, email, password]);
+//    const result = await pgClient.query("SELECT * FROM users WHERE email = $1", [email]);
+
+
+//     await pgClient.query("COMMIT"); // Commit transaction
+//     res.json({ message: "User created", user: result.rows[0] });
+//   } catch (err) {
+//     await pgClient.query("ROLLBACK"); // Rollback transaction on error
+//     console.error("Error:", err);
+//     res.status(500).json({ error: "Internal Server Error" });
+//   }
+// });
+
+
+
+
+
+////JOIN
+// app.get("/users-with-addresses", async (req, res) => {
+//   try {
+//     const result = await pgClient.query(`
+//       SELECT users.username, users.email, addresses.city, addresses.state
+//       FROM users
+//       JOIN addresses ON users.id = addresses.user_id  //// Assuming addresses table has a foreign key user_id referencing users.id
+//     `);
+//     res.json(result.rows);
+//   } catch (err) {
+//     console.error("Error:", err);
+//     res.status(500).json({ error: "Internal Server Error" });
+//   }
 // });
