@@ -138,7 +138,7 @@ This will create:
 npm install pg @types/pg
 ```
 
-## Run Migration
+## Run Migration For First Time to Create Tables in DB
 ```bash
 npx prisma migrate dev
 ```
