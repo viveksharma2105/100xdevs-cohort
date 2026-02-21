@@ -8,16 +8,31 @@ dotenv.config();
 const app = express();
 app.use(express.json());
 
-
 const pool = new pg.Pool({ connectionString: process.env.DATABASE_URL });
 const adapter = new PrismaPg(pool);
 const client = new PrismaClient({ adapter });
 
-
 app.get("/users", async (req, res) => {
+  const users = await client.user.findMany();
+  res.json({
+    users,
+  });
+});
 
-})
+app.get("/todos/:id", async (req, res) => {
+  const id = req.params.id;
+  const users = await client.user.findFirst({
+    where: {
+      id: parseInt(id)
+    }
+   
+  });
+  res.json({
+    users,
+  });
+});
 
+app.listen(3000);
 // async function createUser() {
 //   await client.user.create({
 //     data: {
