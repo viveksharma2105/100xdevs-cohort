@@ -64,3 +64,9 @@ coverage/
 .cache/
 temp/
 tmp/
+
+# Next.js
+.next/
+out/
+.vercel/
+.turbo/

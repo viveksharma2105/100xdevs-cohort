@@ -143,7 +143,13 @@ npm install pg @types/pg
 npx prisma migrate dev
 ```
 
+--------------------------------------------------------
 
+# 🔵 NextJS setup
+## 1️⃣ Create NextJS App
+```bash
+npx create-next-app@latest myApp
+```
 
 ## References
 - [React Documentation](https://react.dev/)
