@@ -143,10 +143,23 @@ npm install pg @types/pg
 npx prisma migrate dev
 ```
 
+--------------------------------------------------------
 
+# 🔵 Nest.js Setup
+
+### 1️⃣ Create Nest.js Project
+```bash
+npx create-nest-app@latest my-nest-app
+```
+## run the app
+```bash
+cd my-nest-app
+npm run dev
+```
 
 ## References
 - [React Documentation](https://react.dev/)
 - [TypeScript Handbook](https://www.typescriptlang.org/docs/)
 - [Tailwind CSS Docs](https://tailwindcss.com/docs/installation)
 - [Node.js Docs](https://nodejs.org/en/docs/) 
+- [Nest.js Docs](https://docs.nestjs.com/)
