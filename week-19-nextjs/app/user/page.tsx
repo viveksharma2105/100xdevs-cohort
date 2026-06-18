@@ -3,10 +3,10 @@ import { setTimeout } from "timers/promises";
 
 export default async function User() {
   const response = await axios.get(
-    "https://week-13-offline.kirattechnologies.workers.dev/api/v1/user/details"
+    "http://localhost:3000/api/v1/user/details"
   );
 
-   await setTimeout(5000); // Simulate a delay of 2 seconds
+   //await setTimeout(5000); // Simulate a delay of 5 seconds
 
   const data = response.data;
 

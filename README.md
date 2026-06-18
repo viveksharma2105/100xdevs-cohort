@@ -138,17 +138,23 @@ This will create:
 npm install pg @types/pg
 ```
 
-## Run Migration
+## Run Migration For First Time to Create Tables in DB
 ```bash
 npx prisma migrate dev
 ```
 
 --------------------------------------------------------
 
-# 🔵 NextJS setup
-## 1️⃣ Create NextJS App
+# 🔵 Nest.js Setup
+
+### 1️⃣ Create Nest.js Project
 ```bash
-npx create-next-app@latest myApp
+npx create-nest-app@latest my-nest-app
+```
+## run the app
+```bash
+cd my-nest-app
+npm run dev
 ```
 
 ## References
@@ -156,3 +162,4 @@ npx create-next-app@latest myApp
 - [TypeScript Handbook](https://www.typescriptlang.org/docs/)
 - [Tailwind CSS Docs](https://tailwindcss.com/docs/installation)
 - [Node.js Docs](https://nodejs.org/en/docs/) 
+- [Nest.js Docs](https://docs.nestjs.com/)
